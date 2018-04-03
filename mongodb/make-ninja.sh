@@ -9,6 +9,7 @@ fi
 
 ./buildscripts/scons.py \
     MONGO_VERSION="0.0.0" MONGO_GIT_HASH="unknown" \
+    CC="${CC:-gcc}" CXX="${CXX:-g++}" \
     VARIANT_DIR=ninja \
     CPPPATH=/usr/local/opt/openssl/include LIBPATH=/usr/local/opt/openssl/lib --ssl \
     --modules="${MODULES}" \
