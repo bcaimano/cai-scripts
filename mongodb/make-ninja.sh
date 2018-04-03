@@ -7,7 +7,7 @@ if [[ -d "${MONGO_MODULES_DIR}/enterprise" ]]; then
     MODULES="${MODULES},enterprise"
 fi
 
-scons \
+./buildscripts/scons.py \
     MONGO_VERSION="0.0.0" MONGO_GIT_HASH="unknown" \
     VARIANT_DIR=ninja \
     CPPPATH=/usr/local/opt/openssl/include LIBPATH=/usr/local/opt/openssl/lib --ssl \
