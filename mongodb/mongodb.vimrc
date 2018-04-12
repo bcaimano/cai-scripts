@@ -64,5 +64,7 @@ set laststatus=2
 set showmode
 set showcmd
 
-map <C-K> :pyf /usr/local/opt/llvm/share/clang/clang-format.py<cr>
-imap <C-K> <c-o>:pyf /usr/local/opt/llvm/share/clang/clang-format.py<cr>
+let g:pymode_python = 'python3'
+
+map <C-K> :pyf /usr/local/bin/clang-format.py<cr>
+imap <C-K> <c-o>:pyf /usr/local/bin/clang-format.py<cr>

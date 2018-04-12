@@ -12,5 +12,7 @@ fi
     CC="${CC:-gcc}" CXX="${CXX:-g++}" \
     VARIANT_DIR=ninja \
     CPPPATH=/usr/local/opt/openssl/include LIBPATH=/usr/local/opt/openssl/lib --ssl \
+    --icecream \
     --modules="${MODULES}" \
+    "${@}" \
     build.ninja

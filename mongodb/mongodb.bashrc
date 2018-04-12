@@ -5,7 +5,12 @@ export CC=/opt/mongodbtoolchain/v2/bin/gcc
 export CXX=/opt/mongodbtoolchain/v2/bin/g++
 export CXXFLAGS="-Werror=noexcept-type"
 
-export LD_LIBRARY_PATH="/opt/mongodbtoolchain/v2/lib"
+#export LD_LIBRARY_PATH="/opt/mongodbtoolchain/v2/lib"
+
+# Maven
+export PATH="/opt/apache-maven/bin:$PATH"
+# Local dir
+export PATH=":$PATH"
 
 alias ll='ls -lah'
 alias cf='./buildscripts/clang_format.py format'
