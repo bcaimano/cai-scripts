@@ -7,6 +7,13 @@ export CXXFLAGS="-Werror=noexcept-type"
 
 #export LD_LIBRARY_PATH="/opt/mongodbtoolchain/v2/lib"
 
+export PATH="/usr/local/sbin:$PATH"
+
+# Icecream
+if [[ -n ${ICECC_DIR} ]]; then
+    export PATH="${ICECC_DIR}/bin:$PATH"
+fi
+
 # Maven
 export PATH="/opt/apache-maven/bin:$PATH"
 # Local dir
