@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-upload.py \
+python2 `which upload.py` \
     --oauth2 \
     -H "mongodbcr.appspot.com" \
     \-y \

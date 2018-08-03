@@ -1,0 +1,26 @@
+projects:
+- name: mongodb-mongo-master
+  default: true
+  alias: required
+- name: mongodb-mongo-v4.0
+  alias: required
+- name: mongodb-mongo-v3.6
+  alias: required
+- name: performance
+  variants:
+  - linux-mmap-repl
+  - linux-mmap-standalone
+  - linux-wt-repl
+  - linux-wt-standalone
+  tasks:
+  - all
+- name: sys-perf
+  variants:
+  - linux-1-node-replSet
+  - linux-3-node-replSet
+  - linux-3-node-replSet-initialsync
+  - linux-3-shard
+  - linux-replSet-initialsync-logkeeper
+  - linux-standalone
+  tasks:
+  - all
