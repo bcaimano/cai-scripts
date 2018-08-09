@@ -1,5 +1,7 @@
 export PS1='\u@\h:$PWD [$?]\$ '
 
+export EDITOR=${EDITOR:-vim}
+
 export CAI_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
 export CC=/opt/mongodbtoolchain/v2/bin/gcc
