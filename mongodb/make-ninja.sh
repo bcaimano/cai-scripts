@@ -13,6 +13,7 @@ fi
     CXXFLAGS="-Wno-class-memaccess" \
     VARIANT_DIR=ninja \
     CPPPATH=/usr/local/opt/openssl/include LIBPATH=/usr/local/opt/openssl/lib --ssl \
+    --link-model=dynamic \
     --icecream \
     --disable-warnings-as-errors \
     --modules="${MODULES}" \

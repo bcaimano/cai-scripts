@@ -2,6 +2,10 @@
 
 set -euo pipefail
 
+if [[ -n ${EVG_PRECOMP:-} ]]; then
+    ${EVG_PRECOMP}
+fi
+
 # Evergreen expects your secret to be in the same file as all other configs.
 # This is bad for sharing your config.
 # So I keep the secret in the normal file and concatenate it with my true config

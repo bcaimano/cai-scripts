@@ -1,6 +1,6 @@
 export PS1='\u@\h:$PWD [$?]\$ '
 
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+export CAI_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
 export CC=/opt/mongodbtoolchain/v2/bin/gcc
 
@@ -43,7 +43,7 @@ export PUSH_THIS_BRANCH=yes
 if [[ ${#EVG_CONFS[@]} -eq 0 ]]; then
     export EVG_CONFS="${HOME}/.evergreen.yml"
     EVG_CONFS="${EVG_CONFS}:${HOME}/.evergreen.yaml"
-    EVG_CONFS="${EVG_CONFS}:${SCRIPT_DIR}/mongodb.evergreen.yaml"
+    EVG_CONFS="${EVG_CONFS}:${CAI_DIR}/mongodb.evergreen.yaml"
 fi
 
 ccache -o max_size=20G
