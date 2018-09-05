@@ -11,7 +11,7 @@ fi
 # So I keep the secret in the normal file and concatenate it with my true config
 REAL_CONF="${HOME}/.evg.comp.yaml"
 1>&2 echo "Using '${REAL_CONF}' as evergreen config..."
-rm "${REAL_CONF}"
+rm -f "${REAL_CONF}"
 
 CONFS=()
 IFS=":" read -ra CONFS <<< "${EVG_CONFS}"
