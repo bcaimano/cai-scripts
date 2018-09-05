@@ -24,3 +24,9 @@ projects:
   - linux-standalone
   tasks:
   - all
+- name: toolchain-builder
+  variants:
+  - all
+  tasks:
+  - build_python2_v2
+  - build_python3_v2
