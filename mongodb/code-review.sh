@@ -2,7 +2,9 @@
 
 set -e
 
-python2 ./buildscripts/clang_format.py format-my
+if [[ -f ./buildscripts/clang_format.py ]]; then
+    python2 ./buildscripts/clang_format.py format-my
+fi
 
 python2 `which upload.py` \
     --oauth2 \

@@ -18,6 +18,7 @@ export PATH="/usr/local/sbin:$PATH"
 
 # Local bin
 export PATH="${HOME}/bin:$PATH"
+export PKG_CONFIG_PATH="${HOME}/pkgconfig"
 
 # Icecream
 if [[ -n ${ICECC_DIR} ]]; then
@@ -32,11 +33,19 @@ export PATH=":$PATH"
 alias ll='ls -lah'
 alias cf='./buildscripts/clang_format.py format'
 
+followCmd(){
+  "${@}" || return $?
+  for ARG; do true; done
+  cd "$ARG"
+}
+
 # CCache/Icecream
 export CCACHE_LOGFILE="${TMPDIR}/ccache.log"
 
 # Scons
-export SCONSFLAGS="-j16"
+export SCONSFLAGS=""
+SCONSFLAGS+="-j16 "
+SCONSFLAGS+="ICECC=/usr/lib/icecream/bin/icecc "
 export SCONS_CACHE_SCOPE="shared"
 
 # Githooks
@@ -49,3 +58,7 @@ if [[ ${#EVG_CONFS[@]} -eq 0 ]]; then
 fi
 
 ccache -o max_size=20G
+
+if command -V pyenv >/dev/null; then
+    eval "$(pyenv init -)"
+    fi

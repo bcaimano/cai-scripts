@@ -24,7 +24,7 @@ fi
 mkdir -p "${MODULES_DIR}"
 
 # Get the enterprise module repo
-if [[ -d "${ENTERPRISE_DIR}" ]]; then
+if [[ ! -d "${ENTERPRISE_DIR}" ]]; then
     mkdir -p "${ENTERPRISE_DIR}"
     git clone "git@github.com:10gen/mongo-enterprise-module" "${ENTERPRISE_DIR}"
 fi

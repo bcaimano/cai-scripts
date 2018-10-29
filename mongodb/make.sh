@@ -8,12 +8,13 @@ if [[ -d "${MONGO_MODULES_DIR}/enterprise" ]]; then
 fi
 
 ./buildscripts/scons.py \
-    --config=force \
     MONGO_VERSION="0.0.0" MONGO_GIT_HASH="unknown" \
     CC="${CC:-gcc}" CXX="${CXX:-g++}" \
-    CPPPATH=/usr/local/opt/openssl/include:/usr/include LIBPATH=/usr/local/opt/openssl/lib:/usr/lib \
-    VERBOSE=on \
-    --disable-warnings-as-errors \
+    CPPPATH=/usr/local/opt/openssl/include:/usr/include/openssl-1.0/ \
+    LIBPATH=/usr/local/opt/openssl/lib:/usr/lib/openssl-1.0/ \
     --ssl \
+    VERBOSE=on \
+    --link-model=dynamic \
+    --disable-warnings-as-errors \
     --modules="${MODULES}" \
     "${@}"
