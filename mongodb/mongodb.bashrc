@@ -5,9 +5,12 @@ export EDITOR=${EDITOR:-vim}
 export CAI_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
 export CC=/opt/mongodbtoolchain/v2/bin/gcc
+export CFLAGS="-fPIC"
 
 export CXX=/opt/mongodbtoolchain/v2/bin/g++
-export CXXFLAGS="-Werror=noexcept-type"
+export CXXFLAGS="-Werror=noexcept-type -fPIC"
+
+export MAKEFLAGS="-j16"
 
 #export LD_LIBRARY_PATH="/opt/mongodbtoolchain/v2/lib"
 
@@ -19,6 +22,9 @@ export PATH="/usr/local/sbin:$PATH"
 # Local bin
 export PATH="${HOME}/bin:$PATH"
 export PKG_CONFIG_PATH="${HOME}/pkgconfig"
+
+# Node Global
+export PATH="${HOME}/.npm-global/bin:$PATH"
 
 # Icecream
 if [[ -n ${ICECC_DIR} ]]; then
@@ -61,4 +67,4 @@ ccache -o max_size=20G
 
 if command -V pyenv >/dev/null; then
     eval "$(pyenv init -)"
-    fi
+fi
