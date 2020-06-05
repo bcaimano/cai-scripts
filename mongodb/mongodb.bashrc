@@ -1,21 +1,16 @@
-export PS1='\u@\h:$PWD [$?]\$ '
+export PS1='- {ec:"$?",u:"\u",h:"\h",d:"\W",} $ '
 
 export EDITOR=${EDITOR:-vim}
 
 export CAI_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
-export CC=/opt/mongodbtoolchain/v2/bin/gcc
 export CFLAGS="-fPIC"
-
-export CXX=/opt/mongodbtoolchain/v2/bin/g++
-export CXXFLAGS="-Werror=noexcept-type -fPIC"
+export CXXFLAGS="-fPIC"
 
 export MAKEFLAGS="-j16"
 
-#export LD_LIBRARY_PATH="/opt/mongodbtoolchain/v2/lib"
-
 export WORKSPACE=${WORKSPACE:-/workspace}
-export GOROOT=${WORKSPACE}/goroot
+export GOPATH="${WORKSPACE}/goroot:${GOPATH:-}"
 export GITROOT=${WORKSPACE}/git
 export PATH="/usr/local/sbin:$PATH"
 
@@ -39,6 +34,15 @@ export PATH=":$PATH"
 alias ll='ls -lah'
 alias cf='./buildscripts/clang_format.py format'
 
+STRANGER_DIR="$HOME/.stranger-dir"
+function stranger(){
+    ranger --choosedir=$STRANGER_DIR "$@" && EC=$?
+    if [[ $EC -ne 0 ]]; then
+        return $EC
+    fi
+    cd "$(cat $STRANGER_DIR)"
+}
+
 followCmd(){
   "${@}" || return $?
   for ARG; do true; done
@@ -49,9 +53,6 @@ followCmd(){
 export CCACHE_LOGFILE="${TMPDIR}/ccache.log"
 
 # Scons
-export SCONSFLAGS=""
-SCONSFLAGS+="-j16 "
-SCONSFLAGS+="ICECC=/usr/lib/icecream/bin/icecc "
 export SCONS_CACHE_SCOPE="shared"
 
 # Githooks
@@ -68,3 +69,27 @@ ccache -o max_size=20G
 if command -V pyenv >/dev/null; then
     eval "$(pyenv init -)"
 fi
+
+tailLess() {
+    FILE="$1"
+    shift
+    >"${FILE}" 2>&1 "${@}"
+    RC=$?
+    less "${FILE}"
+    return $RC
+}
+
+addLink() {
+    ln -s "$(realpath $1)" ~/.sigil/
+}
+
+followLink() {
+    cd "${HOME}/.sigil/$1"
+}
+
+_followLink() {
+    OPTIONS=$(cd ~/.sigil; ls | grep "^$2" )
+    COMPREPLY=($(compgen -W $OPTIONS))
+}
+
+complete -F _followLink followLink

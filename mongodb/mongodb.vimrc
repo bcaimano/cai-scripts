@@ -45,7 +45,7 @@ set noshiftround
 set scrolloff=3
 set backspace=indent,eol,start
 set matchpairs+=<:> " use % to jump between pairs
-runtime! macros/matchit.vim
+" runtime! macros/matchit.vim
 
 " Move up/down editor lines
 nnoremap j gj
@@ -66,5 +66,8 @@ set showcmd
 
 let g:pymode_python = 'python3'
 
-map <C-K> :pyf /usr/local/bin/clang-format.py<cr>
-imap <C-K> <c-o>:pyf /usr/local/bin/clang-format.py<cr>
+autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
+
+call plug#begin('~/.vim/plugs/')
+call plug#end()
