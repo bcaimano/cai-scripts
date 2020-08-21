@@ -3,6 +3,10 @@ projects:
 - name: mongodb-mongo-master
   default: true
   alias: required
+- name: mongodb-mongo-v4.4
+  alias: required
+- name: mongodb-mongo-v4.2
+  alias: required
 - name: mongodb-mongo-v4.0
   alias: required
 - name: mongodb-mongo-v3.6

@@ -3,7 +3,7 @@
 set -e
 
 MONGO_MODULES_DIR="${MONGO_MODULES_DIR:-./src/mongo/db/modules}"
-NINJA_MODULE_DIR="${NINJA_MODULE_DIR:-${HOME}/git/10gen/mongo-enterprise-modules}"
+NINJA_MODULE_DIR="${NINJA_MODULE_DIR:-${GITROOT}/10gen/mongo-enterprise-modules}"
 NINJA_MODULE_URL="${NINJA_MODULE_URL:-git@github.com:10gen/mongo-enterprise-modules.git}"
 
 if [[ ! -d "${NINJA_MODULE_DIR}" ]]; then

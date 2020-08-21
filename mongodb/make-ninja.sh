@@ -16,8 +16,12 @@ fi
 BRANCH_NAME="$(git rev-parse --abbrev-ref HEAD)"
 ROOT_DIR="$(cd "$(git rev-parse --git-common-dir)"; cd ..; pwd)"
 
+VAR_FILE="${VAR_FILE:-}"
 USE_GCC="${USE_GCC:-yes}"
-if [[ $USE_GCC == yes ]]; then
+if [[ -n ${VAR_FILE} ]]; then
+    # Pass
+    true
+elif [[ $USE_GCC == yes ]]; then
     #CXXFLAGS+=" -Wno-class-memaccess"
 #    CXXFLAGS+=" -Wno-redundant-move"
     CXXFLAGS+=" -I${INCLUDE_DIR}"
@@ -30,7 +34,6 @@ if [[ $USE_GCC == yes ]]; then
 else
     VAR_FILE="${TOOLCHAIN_STEM}_clang.vars"
 fi
-CXXFLAGS+=" -fstack-check"
 
 if [[ $ADD_CUSTOM_VARS == yes ]]; then
     VAR_FILE="${MONGO_CUSTOM_VARS} ${VAR_FILE}"
@@ -50,7 +53,7 @@ ARGS+=(
     #VERBOSE=on
 )
 
-BUILD_ROOT=/workspace/build
+BUILD_ROOT="${WORKSPACE}/build"
 ARGS+=(
     --ssl
     --disable-warnings-as-errors

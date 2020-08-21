@@ -35,12 +35,11 @@ os.makedirs(real_variant_dir, exist_ok=True)
 os.symlink("{}-{}".format(gitdescribe,arghash), nice_variant_dir)
 
 # Set a variety of nice to have variables
-CXXFLAGS = ' '.join(['-fPIC', '-fno-var-tracking', '-fstack-check'])
+CXXFLAGS = ' '.join(['-fPIC', '-fno-var-tracking'])
 if os.environ.get("USE_ICECC", "yes") != "no":
-    ICECC = '/opt/icecream/bin/icecc'
-    ICECC_CREATE_ENV = '/opt/icecream/bin/icecc-create-env'
-    #ICECC = '/usr/lib/icecream/bin/icecc'
-    #ICECC_CREATE_ENV = '/usr/lib/icecream/bin/icecc-create-env'
+    ICECC = shutil.which('icecc')
+    ICECC_CREATE_ENV = shutil.which('icecc-create-env')
+
 CACHE_SIZE = 10
 
 # Add the enterprise module if it exists

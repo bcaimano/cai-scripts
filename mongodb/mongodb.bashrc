@@ -66,6 +66,8 @@ fi
 
 ccache -o max_size=20G
 
+# Pyenv
+export PATH="${HOME}/.pyenv/bin:$PATH"
 if command -V pyenv >/dev/null; then
     eval "$(pyenv init -)"
 fi
